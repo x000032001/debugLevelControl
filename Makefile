@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -O2 -g
 CXXFLAGS = -Wall -Wextra -O2 -std=c++11 -g
 
 INCFLAGS = 
-LDFLAGS = -ldl
+LDFLAGS = 
 RM = rm -f
 
 SRCS=$(shell ls *.cpp)

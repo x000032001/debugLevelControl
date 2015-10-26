@@ -1,33 +1,19 @@
 #include "debugCtrl.h"
-#include <dlfcn.h>
-
-typedef int (*func_t)(int);
+#include "plus.h"
 
 int main()
 {
-	dprintf(DEBUG,"I'm at main().\n");
-
 	SET_DEBUG_LEVEL(INFO);
 
-	void* dlhandle = dlopen( "./plus.so" , RTLD_LAZY );
-
-	if( !dlhandle )
-	{
-		fputs( dlerror() , stderr );
-		return 1;
-	}
+	// ignored
+	dprintf(DEBUG,"I'm at main().\n");
 
 
-	func_t func = (func_t) dlsym( dlhandle , "plus5" );
+	// printed
+	dprintf(INFO,"plus5(5) = %d\n",plus5(5));
 
-	char* error = NULL;
-	if( (error = dlerror()) != NULL )
-	{
-		fputs( error , stderr );
-		return 2;
-	}
-	
-	dprintf(INFO,"plus5(5) = %d\n",(*func)(5));
+	dprintf(INFO,"You shouldn't see me\n");
+	dprintf(WARN,"Change debug Level Successful\n");
 
 	return 0;
 }
