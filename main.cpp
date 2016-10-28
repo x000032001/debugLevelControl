@@ -1,19 +1,28 @@
-#include "debugCtrl.h"
+#include "Logger.h"
 #include "plus.h"
 
 int main()
 {
-	SET_DEBUG_LEVEL(INFO);
+	SET_LOG_LEVEL(DEBUG);
 
 	// ignored
-	dprintf(DEBUG,"I'm at main().\n");
+	log(DEBUG,"I'm at main().\n");
 
 
 	// printed
-	dprintf(INFO,"plus5(5) = %d\n",plus5(5));
+	log(INFO,"plus5(5) = %d\n",plus5AAAABBBBCCCC(5));
 
-	dprintf(INFO,"You shouldn't see me\n");
-	dprintf(WARN,"Change debug Level Successful\n");
+
+	log(INFO,"You shouldn't see me\n");
+	log(WARN,"Change debug Level Successful\n");
+
+	SET_LOG_LEVEL(DEBUG);
+
+    log(DEBUG,"QQ\n");
+
+    log(ERROR,"Bye\n");
+
+	log(INFO,"You shouldn't see me\n");
 
 	return 0;
 }
